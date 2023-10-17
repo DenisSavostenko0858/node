@@ -1,21 +1,10 @@
-const path = require('path');
-const fs = require('fs');
+import express from "express";
+const app = express();
+const port = '3000';
 
-// fs.mkdir(path.join(__dirname, 'tmp'),function (err){
-// if(err) {console.error(err)}
-// console.log("Папка создана")})
+app.get('/', function (req, res){
+    res.end('Hello world');
+    console.log(req) //Вывод к нам в консоль не в браузер
+})
 
-
-const filepath = path.join(__dirname, 'tmp', "2.txt");
-console.log(filepath)
-// fs.writeFile(filepath, "Something wrong in your file",function (err){
-//     if(err) {console.error(err)}
-//     console.log("Папка создана")});
-    
-    fs.appendFile(filepath, "\nSomething wrong in your file",function (err){
-        if(err) {console.error(err)}
-        console.log("Папка создана")});
-        
-    fs.readFile(filepath, "UTF-8",(err, data) => {
-        if(err) {console.error(err)}
-        console.log(data)});
+app.listen(port,() => {console.log('listening on port: ' + port);});
