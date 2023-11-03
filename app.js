@@ -30,12 +30,6 @@ app.post('/test', function (req, res){
     res.end("Прошли post text");
 })
 
-//Прослушиваем порт
-app.listen(port, function(){
-    console.log("Сервер запущен порт " + port);
-    addLine("Server started");
-});
-
 //Создаем файл
 function addLine(line){
     line = line + " timestamp: " + new Date().toLocaleString();
@@ -47,3 +41,26 @@ function addLine(line){
         }
     )
 };
+
+//error hundler
+app.use((req, res, next) => {
+    const err = new Error("Couldn't get path");
+    err.status = 404;
+    console.log(err);
+    next(err);
+});
+
+//product error hundler
+console.log(app.get("env"));
+if (app.get("env") == "production"){
+    app.use((err, req, res)=>{
+        res.status(err.status);
+        res.sendFile(err.message);
+    });
+};
+
+//Прослушиваем порт
+app.listen(port, function(){
+    console.log("Сервер запущен порт " + port);
+    addLine("Server started");
+});
