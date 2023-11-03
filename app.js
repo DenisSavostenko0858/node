@@ -1,40 +1,49 @@
+const { error } = require("console");
 const express = require("express")
 const favicon = require("express-favicon");
+const fs = require("fs")
+const { appendFile } = require("fs");
 const path = require("path");
 const app = express();
+const port = '3000';
 
 app.use(express.json());
 app.use(express.urlencoded((extended = true)));
-
 app.use(express.static(path.join(__dirname,'public')))
 
+
+//Иконка
 console.log(__dirname + "/public/favicon.ico")
-
-// Задание
-const fs = require("fs");
-fs.writeFile("hello.txt", "localhost:3000", function(error){
-    if(error) throw error; 
-    console.log("Файл создан. Логируем ping по адресу:");
-    let data = fs.readFileSync("hello.txt", "utf8");
-    console.log(data);  
-});
-
 app.use(favicon(__dirname + "/public/favicon.ico"))
-const port = '3000';
+
 
 app.get('/', function (req, res){
     res.sendFile(__dirname + "/public/index.html");
-    // console.log(req) //Вывод к нам в консоль не в браузер
 })
 app.get('/test', function (req, res){
     console.log("Прошли по пути test");
     res.end("Прошли по пути test");
 })
 app.post('/test', function (req, res){
-    console.log(req.body);
-    console.log("Прошли по пути post");
-    res.end("Прошли по пути post");
+    addLine("Пинганули")
+    console.log("Прошли по пути post text");
+    res.end("Прошли post text");
 })
 
+//Прослушиваем порт
+app.listen(port, function(){
+    console.log("Сервер запущен порт " + port);
+    addLine("Server started");
+});
 
-app.listen(port,() => {console.log('listening on port: ' + port);});
+//Создаем файл
+function addLine(line){
+    line = line + " timestamp: " + new Date().toLocaleString();
+    fs.appendFile(
+        path.join(__dirname + "/public/logger.txt"),
+        line + "\n",
+        (err) => {
+           if(err) console.log(err) 
+        }
+    )
+};
