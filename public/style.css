@@ -1,4 +1,31 @@
-.classs {
-    color: bisque;
-  }
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.block{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(175, 213, 238);
+    border: solid 1px rgb(152, 152, 219);
+    border-radius: 5px;
+    
+    padding: 15px;
+
+    margin-top: 150px;
+}
+.error-text{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 14px;
+}
+.error-img{
+    display: flex;
+    margin-left: 30px;
+}
+img{
+    border-radius: 5px;
+}
   
