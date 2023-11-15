@@ -16,6 +16,7 @@ app.use(express.urlencoded((extended = true)));
 //Доступ к папке на прямую
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.static(path.join(__dirname, 'views')));
+app.use(express.static(path.join(__dirname, 'public/css/bootstrap-5.3.2/dist/css')));
 //Иконка
 console.log(__dirname + "/public/favicon.ico")
 app.use(favicon(__dirname + "/public/favicon.ico"))
