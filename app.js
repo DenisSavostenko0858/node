@@ -23,7 +23,7 @@ app.use(express.static(path.join(__dirname, 'public/css/bootstrap-5.3.2/dist/css
 //Иконка
 console.log(__dirname + "/public/favicon.ico")
 app.use(favicon(__dirname + "/public/favicon.ico"))
-
+// 123123
 
 app.get('/', function (req, res){
     res.sendFile(__dirname + "/public/index.html");
