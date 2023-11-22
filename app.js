@@ -5,6 +5,9 @@ const fs = require("fs")
 const { appendFile } = require("fs");
 const path = require("path");
 const app = express();
+
+const myrouts = require("./routers/index_routers");
+
 const ejs = require("ejs");
 const port = '3000';
 
@@ -24,19 +27,7 @@ app.use(express.static(path.join(__dirname, 'public/css/bootstrap-5.3.2/dist/css
 console.log(__dirname + "/public/favicon.ico")
 app.use(favicon(__dirname + "/public/favicon.ico"))
 
-
-app.get('/', function (req, res){
-    res.sendFile(__dirname + "/public/index.html");
-})
-app.get('/test', function (req, res){
-    console.log("Прошли по пути test");
-    res.end("Прошли по пути test");
-})
-app.post('/test', function (req, res){
-    addLine("Пинганули")
-    console.log("Прошли по пути post text");
-    res.end("Прошли post text");
-})
+app.use(myrouts);
 
 //Создаем файл
 function addLine(line){
@@ -77,3 +68,16 @@ app.listen(port, function(){
     console.log("Сервер запущен порт " + port);
     addLine("Server started");
 });
+
+app.get('/', function (req, res){
+    res.sendFile(__dirname + "/public/index.html");
+})
+app.get('/test', function (req, res){
+    console.log("Прошли по пути test");
+    res.end("Прошли по пути test");
+})
+app.post('/test', function (req, res){
+    addLine("Пинганули")
+    console.log("Прошли по пути post text");
+    res.end("Прошли post text");
+})   
