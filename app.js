@@ -17,6 +17,9 @@ app.use(express.urlencoded((extended = true)));
 app.use(express.static(path.join(__dirname,'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 app.use(express.static(path.join(__dirname, 'public/css/bootstrap-5.3.2/dist/css')));
+//scss
+app.use(express.static(path.join(__dirname, 'public/css/bootstrap-5.3.2/dist/css/bootstrap.css')))
+
 //Иконка
 console.log(__dirname + "/public/favicon.ico")
 app.use(favicon(__dirname + "/public/favicon.ico"))
