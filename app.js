@@ -45,7 +45,6 @@ function addLine(line){
 app.use((req, res, next) => {
     const err = new Error("NO FOUND ERROR");
     err.status = 404;
-    // console.log(err);
     next(err);
 });
 

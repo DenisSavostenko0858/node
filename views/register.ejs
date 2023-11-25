@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <title>Register</title>
+</head>
+<body>
+    <header>
+        <%- include('partials/header'); %>
+    </header>
+    <main>
+        <h3>Форма</h3>
+        <h3>Регистрации и Авторизации</h3>
+        <div class="container-fluid">
+            <div class="offset-md-4 col-md-4 offset-sm-3 col-sm-6">
+                <div class="form-container">
+                <h3 class="title">Создайте Аккаунт</h3>
+                <ul class="social-links">
+                    <li><a href=""><i class="fab fa-google"></i></a></li>
+                    <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                </ul>
+                <span class="description">Для регистрации используйте свою почту:</span>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Имя">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Почта">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="Пароль">
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" class="checkbox">
+                        <span class="check-label">Соглашаетесь с нашей <a href="">Политикой</a> и <a href="">Обработкой данных</a></span>
+                    </div>
+                    <button class="btn signup">Sign up</button>
+                    <button class="btn signin">Sign in</button>
+                </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-light text-center text-lg-start">
+        <%- include('partials/footer'); %>
+    </footer>
+</body>
+</html>
