@@ -18,7 +18,8 @@
     "favicons": "^7.1.4",
     "mysql3": "^0.6.0",
     "node-gyp": "^10.0.1",
-    "sequelize": "^6.35.1"
+    "sequelize": "^6.35.1",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
