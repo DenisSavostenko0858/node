@@ -40,30 +40,30 @@ app.use(myrouts);
 //         }
 //     )
 // };
-const Sequelize = require("sequelize");
-const sequelize = new Sequelize({
-  dialect: "sqlite",
-  storage: "test.db",
-  define: {
-    timestamps: false
-    }
-});
-const User = sequelize.define("user", {
-    id: {
-      type: Sequelize.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-      allowNull: false
-    },
-    name: {
-      type: Sequelize.STRING,
-      allowNull: false
-    },
-    age: {
-      type: Sequelize.INTEGER,
-      allowNull: false
-    }
-  });
+// const Sequelize = require("sequelize");
+// const sequelize = new Sequelize({
+//   dialect: "sqlite",
+//   storage: "test.db",
+//   define: {
+//     timestamps: false
+//     }
+// });
+// const User = sequelize.define("user", {
+//     id: {
+//       type: Sequelize.INTEGER,
+//       autoIncrement: true,
+//       primaryKey: true,
+//       allowNull: false
+//     },
+//     name: {
+//       type: Sequelize.STRING,
+//       allowNull: false
+//     },
+//     age: {
+//       type: Sequelize.INTEGER,
+//       allowNull: false
+//     }
+//   });
 
 //error hundler
 app.use((req, res, next) => {
