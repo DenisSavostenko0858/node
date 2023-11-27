@@ -11,8 +11,6 @@ const myrouts = require("./routers/index_routers");
 const ejs = require("ejs");
 const port = '3000';
 
-
-// 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
@@ -32,16 +30,40 @@ app.use(favicon(__dirname + "/public/favicon.ico"))
 app.use(myrouts);
 
 //Создаем файл
-function addLine(line){
-    line = line + " timestamp: " + new Date().toLocaleString();
-    fs.appendFile(
-        path.join(__dirname + "/public/logger.txt"),
-        line + "\n",
-        (err) => {
-           if(err) console.log(err) 
-        }
-    )
-};
+// function addLine(line){
+//     line = line + " timestamp: " + new Date().toLocaleString();
+//     fs.appendFile(
+//         path.join(__dirname + "/public/logger.txt"),
+//         line + "\n",
+//         (err) => {
+//            if(err) console.log(err) 
+//         }
+//     )
+// };
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize({
+  dialect: "sqlite",
+  storage: "test.db",
+  define: {
+    timestamps: false
+    }
+});
+const User = sequelize.define("user", {
+    id: {
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false
+    },
+    name: {
+      type: Sequelize.STRING,
+      allowNull: false
+    },
+    age: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+    }
+  });
 
 //error hundler
 app.use((req, res, next) => {
@@ -63,7 +85,12 @@ if (app.get("env") != "development"){
         console.log(app.get("env"), err.status, err.message);
         });
     };        
-
+    User.create({
+        name: "Tom",
+        age: 35
+      }).then(res=>{
+        console.log(res);
+      }).catch(err=>console.log(err));
 //Прослушиваем порт
 app.listen(port, function(){
     console.log("Сервер запущен порт " + port);
