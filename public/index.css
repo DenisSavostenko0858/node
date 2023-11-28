@@ -275,4 +275,30 @@ footer {
 .form-horizontal .btn.signin:focus {
   text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 5px #4E4C97;
+}
+
+.container-fluid {
+  display: flex;
+  margin-top: 5px;
+}
+
+.h3-register {
+  display: flex;
+  margin-top: 50px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.main-content {
+  display: flex;
+  display: flex;
+  margin-top: 50px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #aacef0;
+  width: 600px;
+  border-radius: 5px;
+  padding: 5px;
 }/*# sourceMappingURL=index.css.map */
