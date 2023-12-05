@@ -9,9 +9,6 @@ router.get('/', function(req,res){
 router.post('/', function(req,res){});
 
 router.get('/register',register.form);
-router.post('/register', function(req,res){
-    // console.log("Register");
-    // res.end("Register");
-});
+router.post('/register', register.submit);
 
 module.exports = router;
