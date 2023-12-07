@@ -14,5 +14,5 @@ exports.submit = (req, res, next) => {
             };
             res.error("Такой пользователь в базе уже есть");
             res.redirect("/");
-        };
-    });
+        });
+    };
