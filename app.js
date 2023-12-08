@@ -67,16 +67,3 @@ app.listen(port, function(){
     console.log("Сервер запущен порт " + port);
     addLine("Server started");
 });
-
-// app.get('/', function (req, res){
-//     res.sendFile(__dirname + "/public/index.html");
-// })
-// app.get('/test', function (req, res){
-//     console.log("Прошли по пути test");
-//     res.end("Прошли по пути test");
-// })
-// app.post('/test', function (req, res){
-//     addLine("Пинганули")
-//     console.log("Прошли по пути post text");
-//     res.end("Прошли post text");
-// })   
