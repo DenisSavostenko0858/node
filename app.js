@@ -30,16 +30,16 @@ app.use(favicon(__dirname + "/public/favicon.ico"))
 app.use(myrouts);
 
 //Создаем файл
-function addLine(line){
-    line = line + " timestamp: " + new Date().toLocaleString();
-    fs.appendFile(
-        path.join(__dirname + "/public/logger.txt"),
-        line + "\n",
-        (err) => {
-           if(err) console.log(err) 
-        }
-    )
-};
+// function addLine(line){
+//     line = line + " timestamp: " + new Date().toLocaleString();
+//     fs.appendFile(
+//         path.join(__dirname + "/public/logger.txt"),
+//         line + "\n",
+//         (err) => {
+//            if(err) console.log(err) 
+//         }
+//     )
+// };
 
 //error hundler
 app.use((req, res, next) => {
@@ -65,5 +65,5 @@ if (app.get("env") != "development"){
 //Прослушиваем порт
 app.listen(port, function(){
     console.log("Сервер запущен порт " + port);
-    addLine("Server started");
+    // addLine("Server started");
 });
