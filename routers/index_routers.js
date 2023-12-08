@@ -15,7 +15,7 @@ router.get('/',entries.list);
 // Страница после входа         
 
 router.get('/login',login.form);
-// router.post('/login', login.submit);
+router.post('/login', login.submit);
 // Главная страница добавить кнопки входа и регистрации и блок для вывода данных пользователя
 router.get('/register',register.form);
 router.post('/register', register.submit);
