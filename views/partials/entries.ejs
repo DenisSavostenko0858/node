@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- links -->
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <!-- files -->
+     <link rel="stylesheet" href="../public/css/bootstrap-5.3.2/dist/css/bootstrap.min.css">
+     <script src="../public/css/bootstrap-5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+     <link rel="stylesheet" href="index.css">
+    <title>Entries</title>
+</head>
+<body>
+    <header>
+        <%- include('partials/header'); %>
+    </header>
+    <main>
+        <h5><%- entries.title ></h5>
+        <div class="main-content">
+            <h3>Контент</h3>
+        </div>
+    </main>
+    <footer class="bg-light text-center text-lg-start">
+        <%- include('partials/footer'); %>
+    </footer>
+</body>
+</html>

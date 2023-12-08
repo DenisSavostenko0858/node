@@ -3,15 +3,16 @@ const app = express()
 const router = express.Router();
 const register = require('../controlers/register')
 const login = require('../controlers/login')
+const login = require('../controlers/entries')
 
-router.get('/', function(req,res){
-    res.sendFile(path.join(__dirname + "/public/index.html"))
-});
+// router.get('/', function(req,res){
+//     res.sendFile(path.join(__dirname + "/public/index.html"))
+// });
 // Главная страница гостевая
 
-// router.get('/entries',entries.list);
-// Страница после входа         
+router.get('/',entries.list);
 // router.post('/entry', entry.form);
+// Страница после входа         
 
 router.get('/login',login.form);
 // router.post('/login', login.submit);
