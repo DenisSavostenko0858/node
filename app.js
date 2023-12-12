@@ -5,16 +5,18 @@ const fs = require("fs")
 const { appendFile } = require("fs");
 const path = require("path");
 const app = express();
-
-const myrouts = require("./routers/index_routers");
-
 const ejs = require("ejs");
+const session = require("express-session");
+const userSession = require("./middleware/user_session");
 const port = '3000';
+const myrouts = require("./routers/index_routers");
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json());
+app.use(userSession);
+app.use(session({ secret: "aboba", resave: false, saveUninitialized: true}));
 app.use(express.urlencoded((extended = true)));
 //Доступ к папке на прямую
 app.use(express.static(path.join(__dirname,'public')));

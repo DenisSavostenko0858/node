@@ -30,9 +30,9 @@ class User{
     static authentificate(dataForm, cb){
         User.fiendByEmail(dataForm.email, (err, user) =>{
             if(err) return cb(err);
-            if (!user) return cb(err);
+            if (!user) return cb();
         });
-        const result = bcrypt.compare(dataForm, password, user, password);
+        const result = bcrypt.compare(dataForm.password, user.password);
         if (result) return cb(user);
     };
 };

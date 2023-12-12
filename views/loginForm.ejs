@@ -25,15 +25,15 @@
                 <div class="form-container">
                 <h3 class="title">Войдите в Аккаунт</h3>
                 <span class="description">Для авторизации используйте свою почту:</span>
-                <form class="form-horizontal">
+                <form class="form-horizontal" action="/login" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Имя" id="name">
+                        <!-- <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Имя" id="name">
+                            <input type="email" class="form-control" placeholder="Почта" id="email" name="loginForm[email]">
+                        </div> -->
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-control" placeholder="Почта" id="email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Пароль" id="password">
+                        <input type="password" class="form-control" placeholder="Пароль" id="password" name="loginForm[password]">
                     </div>
                     <button class="btn signin">Sign in</button>
                 </form>
