@@ -17,4 +17,9 @@ exports.submit = (req, res, next) => {
         };
     });
 };
-exports.logout = function(req,res){};
+exports.logout = function(req, res, next){
+    res.session.destroy((err)=>{
+        if (err) return next(err);
+        res.redirect("/")
+    });
+};

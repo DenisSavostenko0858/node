@@ -16,6 +16,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.json());
 app.use(userSession);
+app.use(myrouts);
+
 app.use(session({ secret: "aboba", resave: false, saveUninitialized: true}));
 app.use(express.urlencoded((extended = true)));
 //Доступ к папке на прямую
@@ -29,7 +31,6 @@ app.use(express.static(path.join(__dirname, 'public/css/bootstrap-5.3.2/dist/css
 console.log(__dirname + "/public/favicon.ico")
 app.use(favicon(__dirname + "/public/favicon.ico"))
 
-app.use(myrouts);
 
 //Создаем файл
 // function addLine(line){

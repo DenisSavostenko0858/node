@@ -1,6 +1,6 @@
 const sqlite3 = require("sqlite3").verbose();
-const bcrypt = require("bcrypt")
 const db = new sqlite3.Database('test.db');
+const bcrypt = require("bcrypt");
 
 const sql = "CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, email TEXT NOT NULL, password TEXT NOT NULL, age INTEGER NOT NULL)";
 
@@ -31,10 +31,11 @@ class User{
         User.fiendByEmail(dataForm.email, (err, user) =>{
             if(err) return cb(err);
             if (!user) return cb();
-        });
+    
         const result = bcrypt.compare(dataForm.password, user.password);
-        if (result) return cb(user);
-    };
+        if (result) return cb(null, user);
+        cb();
+    })};
 };
 
 module.exports = User;
