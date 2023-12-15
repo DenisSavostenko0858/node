@@ -1,26 +1,29 @@
-const Entry = require('../models/entry')
+const Entry = require("../models/entry");
 
-exports.list = (req, res) => {
-    Entry.selectAll((err, entries) => {
-     if(err) return next(err);   
-     res.render('entries.ejs',{title:'list', entries: entries});
-    })};
+exports.list = (req, res, next) => {
+  Entry.selectAll((err, entries) => {
+    if (err) return next(err);
+    res.render("entries", { title: "Entries", entries: entries });
+  });
+};
+
 exports.form = (req, res, next) => {
-    res.render("post", {title: 'post'});
+  res.render("post", { title: "Post" });
 };
 exports.submit = (req, res, next) => {
-    try{
+  try {
     const username = req.user ? req.user.name : null;
     const data = req.body.entry;
 
     const entry = {
-        username: username,
-        title: data.title,
-        content: data.content
+      username: username,
+      title: data.title,
+      content: data.content,
     };
+
     Entry.create(entry);
     res.redirect("/");
-    } catch(err){
-        return next(err);
-    };
+  } catch (err) {
+    return next(err);
+  }
 };

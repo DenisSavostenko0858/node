@@ -6,7 +6,7 @@ const login = require('../controlers/login')
 const entries = require('../controlers/entries')
 
 router.get('/',entries.list);
-router.post('/entry', entries.form);
+router.get('/post', entries.form);
 router.post('/post', entries.submit);
 // Страница после входа         
 
