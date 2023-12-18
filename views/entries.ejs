@@ -19,19 +19,23 @@
       <% entries.forEach((entry)=>{ %>
           <div class="card entry" style="width: 66rem;">
               <div class="card-body ">
-                <input type="checkbox" name="entryIds" value="<%= entry.id %>">
-                <h5 class="card-title"><%#= entry.title %></h5>
+              <input type="checkbox" name="entryIds" value="<%= entry.id %>">
+              </br> 
                 <p class="card-text">
-                 Messages:
+                  Тема:
+                     <%= entry.title %> 
+                 </p>
+                <p class="card-text">
+                 Сообщение:
                     <%= entry.content %> 
                 </p>
             </br>
-            <h6>Autor :   <%= entry.username %> </h6>
+            <h6>Автор :   <%= entry.username %> </h6>
                 </div>
             </div> 
             </br>
             <% }) %> 
-            <button type="submit"> Удалить выбранные записи</button>
+            <button type="submit" class="btn btn-info"> Удалить выбранные записи</button>
       </form>
     </div>
     <footer><%- include('./partials/footer')%></footer>
