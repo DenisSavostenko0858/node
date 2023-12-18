@@ -12,25 +12,28 @@
   </head>
   <body>
     <%- include('./partials/menu'); %>
-    <!-- <header><%- include('./partials/header'); %></header> -->
+    <h1 align="center">Messager</h1>
     <div class="container">
+      <form action="/delete" method="post">
       <%#- include ('./partials/messages') %>
       <% entries.forEach((entry)=>{ %>
           <div class="card entry" style="width: 66rem;">
               <div class="card-body ">
+                <input type="checkbox" name="entryIds" value="<%= entry.id %>">
                 <h5 class="card-title"><%#= entry.title %></h5>
-              
-              <p class="card-text">
-                  <%= entry.content %> 
-                  тут контент будет
-              </p>
-          </br>
-          <h6>Запостил :   <%= entry.username %> </h6>
-              </div>
-          </div> 
-          </br>
-      <% }) %> 
-      </div>
+                <p class="card-text">
+                 Messages:
+                    <%= entry.content %> 
+                </p>
+            </br>
+            <h6>Autor :   <%= entry.username %> </h6>
+                </div>
+            </div> 
+            </br>
+            <% }) %> 
+            <button type="submit"> Удалить выбранные записи</button>
+      </form>
+    </div>
     <footer><%- include('./partials/footer')%></footer>
   </body>
 </html>

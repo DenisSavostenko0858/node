@@ -27,3 +27,11 @@ exports.submit = (req, res, next) => {
     return next(err);
   }
 };
+exports.delete = (req, res, next) => {
+  const entryIds = req.body.entryIds;
+  
+  Entry.delete(entryIds, (err) => {
+    if (err) return next(err);
+    res.redirect("/");
+  });
+};

@@ -12,6 +12,7 @@ router.get("/", entries.list);
 
 router.get("/post", entries.form);
 router.post("/post", entries.submit);
+router.post("/delete", entries.delete);
 
 router.get("/register", register.form);
 router.post("/register", register.submit);

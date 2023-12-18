@@ -15,6 +15,11 @@ class Entry {
   static selectAll(cb) {
     db.all("SELECT * FROM entries", cb);
   }
+  // Удаление через чек бокс
+  static delete(id, cb) {
+    const sql = "DELETE FROM entries WHERE id = ?";
+    db.run(sql, [id], cb);
+  }
 }
 
 module.exports = Entry;
