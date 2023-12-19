@@ -19,6 +19,7 @@ exports.submit = (req, res, next) => {
       username: username,
       title: data.title,
       content: data.content,
+      timestamp: data.timestamp
     };
 
     Entry.create(entry);
