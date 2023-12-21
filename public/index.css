@@ -5,6 +5,7 @@ body {
   height: 100%;
   background: rgb(183, 180, 228);
   background: linear-gradient(90deg, rgb(197, 194, 233) 0%, rgb(153, 175, 247) 50%, rgb(0, 202, 255) 100%);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
 }
 
 main {
@@ -14,6 +15,7 @@ main {
   align-items: center;
   flex-direction: column;
   flex-grow: 1;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
 }
 
 .block {
