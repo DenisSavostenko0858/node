@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const register = require("../controllers/register");
 const login = require("../controllers/login");
-const logout = require("../controllers/logout");
 const entries = require("../controllers/entries");
 const entry = require("../controllers/entry");
 const post = require("../controllers/post");
