@@ -3,9 +3,7 @@ const router = express.Router();
 const register = require("../controllers/register");
 const login = require("../controllers/login");
 const entries = require("../controllers/entries");
-const entry = require("../controllers/entry");
 const post = require("../controllers/post");
-const index = require("../controllers/index");
 
 router.get("/", entries.list);
 
