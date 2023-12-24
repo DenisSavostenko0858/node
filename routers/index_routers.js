@@ -19,8 +19,6 @@ router.post("/register", register.submit);
 router.get("/login", login.form);
 router.post("/login", login.submit);
 
-// router.get("/post", post.form);
-// router.post("/post", post.submit);
 
 router.get("/logout", login.logout);
 
