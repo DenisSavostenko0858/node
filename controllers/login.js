@@ -4,17 +4,6 @@ exports.form = (req, res) => {
   res.render("loginForm", { title: "Login" });
 };
 
-// exports.submit = (req, res, next) => {
-//   User.findByEmail(req.body.email, (error, user) => {
-//     if (error) return next(error);
-//     if (user) {
-//       res.redirect("/");
-//     } else {
-//       console.log("Такого пользователя не существует");
-//     }
-//   });
-// };
-
 exports.submit = (req, res, next) => {
   User.authentificate(req.body.loginForm, (error, data) => {
     if (error) return next(error);
