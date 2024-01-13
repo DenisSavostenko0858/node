@@ -4,6 +4,7 @@ const register = require("../controllers/register");
 const login = require("../controllers/login");
 const entries = require("../controllers/entries");
 const post = require("../controllers/post");
+const validation = require("../middleware/validate_form");
 
 router.get("/", entries.list);
 
@@ -12,7 +13,7 @@ router.post("/post", entries.submit);
 router.post("/delete", entries.delete);
 
 router.get("/register", register.form);
-router.post("/register", register.submit);
+router.post("/register", validation ,register.submit);
 
 router.get("/login", login.form);
 router.post("/login", login.submit);

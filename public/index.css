@@ -303,4 +303,13 @@ footer {
   width: 600px;
   border-radius: 5px;
   padding: 5px;
+}
+
+.error-card {
+  background-color: #aacef0;
+  color: white;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode";
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
 }/*# sourceMappingURL=index.css.map */

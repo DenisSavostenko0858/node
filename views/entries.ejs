@@ -16,10 +16,10 @@
     <h1 align="center">Messager</h1>
     <div class="container">
       <form action="/delete" method="post">
-      <%#- include ('./partials/messages') %>
+      <!-- <%- include ('./partials/messages') %> -->
       <% entries.forEach((entry)=>{ %>
-          <div class="card entry" style="width: 66rem;">
-              <div class="card-body ">
+          <div class="card entry" style="width: 570px;">
+              <div class="card-body">
               <input type="checkbox" name="entryIds" value="<%= entry.id %>">
               </br> 
                 <p class="card-text">
