@@ -19,7 +19,19 @@ module.exports = (req, res, next) => {
     margin-left: 35%;
     margin-top: 10%">
       <h2>Заполните все поля!</h2>
-      <a href="javascript:history.back()">Назад</a>
+      <a href="javascript:history.back()"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin-top: 40px;
+        width: 80px;
+        height: 30px;
+        border: none;
+        background-color: blue;
+        color: white;
+      " >Назад</a>
       </div>
     `);
     return;
@@ -42,7 +54,19 @@ module.exports = (req, res, next) => {
     margin-left: 35%;
     margin-top: 10%">
       <h2>Пароль должен содержать латинские буквы, цифры и быть длиной не менее 6 символов</h2>
-      <a href="javascript:history.back()">Назад</a>
+      <a href="javascript:history.back()"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin-top: 40px;
+        width: 80px;
+        height: 30px;
+        border: none;
+        background-color: blue;
+        color: white;
+      " >Назад</a>
       </div>
     `);
     return;
@@ -65,7 +89,19 @@ module.exports = (req, res, next) => {
     margin-top: 10%">
       <h2>Некорректный адрес электронной почты</h2>
       <h2>Попробуйте еще раз</h2>
-      <a href="javascript:history.back()">Назад</a>
+      <a href="javascript:history.back()"
+      style="
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        margin-top: 40px;
+        width: 80px;
+        height: 30px;
+        border: none;
+        background-color: blue;
+        color: white;
+      " >Назад</a>
       </div>
     `);
     return;
