@@ -12,6 +12,9 @@ router.get("/post", entries.form);
 router.post("/post", entries.submit);
 router.post("/delete", entries.delete);
 
+router.get("/update/:id", entries.updateForm);
+router.post("/update", entries.updateSubmit);
+
 router.get("/register", register.form);
 router.post("/register", validation ,register.submit);
 

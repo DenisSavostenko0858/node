@@ -15,6 +15,20 @@ class Entry {
   static selectAll(cb) {
     db.all("SELECT * FROM entries", cb);
   }
+  //Обновление данных
+  static update(id, content, cb) {
+    const sql = "UPDATE entries SET content = ? WHERE id = ?";
+    db.run(sql, [content, id], cb);
+  }
+  static getEntryById(entryId, cb) {
+    const sql = "SELECT * FROM entries WHERE id = ?";
+    db.query(sql, [entryId], (err, result) => {
+      if (err) {
+        return cb(err);
+      }
+      cb(null, result[0]);
+    });
+  }
   // Удаление через чек бокс
   static delete(id, cb) {
     const sql = "DELETE FROM entries WHERE id = ?";

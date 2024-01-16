@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+</head>
+<body>
+    <header><%- include ('./partials/header') %></header>
+    <main>
+        <h1>Измени свой пост</h1>
+   
+      <form method="post" action="/update/<%= entry.id %>?_method=PUT"">
+        <div class="mb-3">
+          <label for="z" class="form-label">Заголовок</label>
+          <input
+            type="text"
+            class="form-control"
+            name="entry[title]"
+            id="z"
+            aria-describedby="helpId"
+            value="<%= entry.title %>"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="s" class="form-label">Текст</label>
+          <textarea class="form-control" name="entry[content]" id="s" rows="3">
+<%= entry.content %></textarea
+          >
+        </div>
+        <button
+          type="submit"
+          value="Post"
+          class="btn btn-primary"
+          style="
+            border: 2px #c9007c solid;
+            color: #ffffff;
+            background-color: #c9007c;
+          "
+        >
+          Изменить
+        </button>
+      </form>
+    </div>
+    </main>
+    <footer><%- include ('./partials/footer') %></footer>
+</body>
+</html>

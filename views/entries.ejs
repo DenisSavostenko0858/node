@@ -16,12 +16,12 @@
     <h1 align="center">Messager</h1>
     <div class="container">
       <form action="/delete" method="post">
-      <!-- <%- include ('./partials/messages') %> -->
       <% entries.forEach((entry)=>{ %>
           <div class="card entry" style="width: 570px;">
               <div class="card-body">
               <input type="checkbox" name="entryIds" value="<%= entry.id %>">
-              </br> 
+            </br> 
+            <a href="/update/{{entry.id}}">Отредактировать</a>
                 <p class="card-text">
                   Тема:
                      <%= entry.title %> 
@@ -39,7 +39,9 @@
                 </div>
             </div> 
             </br>
-            <% }) %> 
+            </br>
+            <% }) %>
+            </br> 
             <button type="submit" class="btn btn-info"> Удалить выбранные записи</button>
       </form>
     </div>
