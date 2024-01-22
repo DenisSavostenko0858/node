@@ -8,7 +8,8 @@ exports.submit = (req, res, next) => {
   User.authentificate(req.body.loginForm, (error, data) => {
     if (error) return next(error);
     if (!data) {
-      console.log("Логин или пароль не верны");
+      res.error("Логин или пароль не верны");
+      // console.log("Логин или пароль не верны");
       res.send(` <div 
       style="
       display: flex;

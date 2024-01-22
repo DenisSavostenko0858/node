@@ -13,14 +13,14 @@
   <body>
     <header><%- include('./partials/header'); %></header>
     <div class="container">
-      <div class="container_error-body">
-        <h4 class="error-body_head">Error</h4>
-        <img src="error.jpg" alt="ERROR 404" class="error-body_img" />
+      <div class="container-error-body">
+        <h4 class="error-body-head">Error</h4>
+        <img src="error.jpg" alt="ERROR 404" class="error-body-img" />
         <%if(err.status === 404){%>
         <h1><%=err.message%></h1>
         <img src="<%=link%>" alt="kukushka" />
         <%}%>
-        <p class="error-body_main">Ошибка, вернитесь позже</p>
+        <p class="error-body-main">Ошибка, вернитесь позже</p>
 
         <p class="test"></p>
       </div>

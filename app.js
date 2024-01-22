@@ -9,6 +9,7 @@ const session = require("express-session");
 const app = express();
 const myRoutes = require("./routers/index_routers");
 const userSession = require("./middleware/user_session");
+const messagers = require("./middleware/messegers");
 const port = "3000";
 
 app.set("view engine", "ejs");
@@ -43,6 +44,7 @@ app.use(
 app.use(favicon(__dirname + "/public/favicon.png"));
 app.use(userSession);
 app.use(myRoutes);
+app.use(messagers);
 
 app.listen(port, () => {
   console.log(`Локальный сервер запущен, порт: ${port}`);

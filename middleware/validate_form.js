@@ -120,3 +120,15 @@ function validatePassword(pass) {
   return passPattern.test(pass);
 }
 // Латиница в разных регистрах и не менее 6
+
+// Валидация поста
+const getfield = (req, field) => {
+  let value;
+  field.forEach((element) => {
+    value = req.body[element];
+  });
+  return value;
+}
+function parseField (field) {
+  // return field.split(/\[\]) 
+}
