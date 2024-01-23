@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/index.css" />
+  </head>
+  <body>
+    <header><%- include(`./partials/header`) %></header>
+    <main>
+      <div class="container">
+        <h2>Здравствуй гость👋</h2>
+            <h3>Присоединяйся к нам🤗</h3>
+            <div style="text-align: center;">
+                <p>Чтобы стать чатью нашего комьюнити тебе нужно</p>  
+                <a href="/register">Зарегистрироваться</a> или 
+                <a href="/login">Авторизоваться</a>
+            </div>
+      </div>
+      <div class="container-gif">
+        <iframe src="https://giphy.com/embed/3o7TKILKwQCtphbl7y" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+      </div>
+    </main>
+    <footer><%- include(`./partials/footer`) %></footer>
+  </body>
+</html>

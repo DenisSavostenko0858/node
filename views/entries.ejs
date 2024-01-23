@@ -1,53 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/bootstrap.css" />
-    <script defer src="./css/bootstrap-5.3.2/dist/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="./css/index.css" />
-    <title><%= title%></title>
-  </head>
-  <body>
-    <%- include('./partials/menu'); %>
-    </br> 
-    <h1 align="center">Messager</h1>
-    <div class="container">
-      <form action="/delete" method="post">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <header><%- include ('./partials/header') %></header>
+    <main>
+      <div class="container">
+        <h1>Посты</h1>
+      </div>
+      <div class="container">
+      <%#- include ('./partials/messages') %>
       <% entries.forEach((entry)=>{ %>
-          <div class="card entry" style="width: 570px;">
-              <div class="card-body">
-              <input type="checkbox" name="entryIds" value="<%= entry.id %>">
-            </br> 
-            <a href="/update/{{entry.id}}">Отредактировать</a>
-                <p class="card-text">
-                  Тема:
-                     <%= entry.title %> 
-                 </p>
-                <p class="card-text">
-                 Сообщение:
-                    <%= entry.content %> 
-                </p>
-                <p class="card-text">
-                  Дата:
-                     <%= entry.timestamp %> 
-                 </p>
-            </br>
-            <h6>Автор :   <%= entry.username %> </h6>
-                </div>
-            </div> 
-            </br>
-            </br>
-            <% }) %>
-            </br> 
-            <button type="submit" class="btn btn-info"> Удалить выбранные записи</button>
-      </form>
-    </div>
-    <div class="images" align="center">
-      <iframe src="https://giphy.com/embed/65qzUZckzeWG1wugLW" width="400" height="400" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
-    </div>
-    <footer><%- include('./partials/footer')%></footer>
-  </body>
+          <div class="card-entry" style="width: 66rem; padding: 10px;">
+              <div class="card-body ">
+                  <h5 class="card-title">Тема: <%= entry.title %></h5>
+                  <p class="card-text">
+                      Сообщение: <%= entry.content %> 
+                  </p>
+                  </br>
+                  <h6>Автор:   <%= entry.username %> </h6> 
+                  <p class="card-text"><small class="text-body-secondary"><%= entry.created_at %></small></p>               
+                  <% if (locals.user) { %>
+                      <% if (locals.admin || entry.username === locals.user.name) { %>
+                        <a type="button" href="/update/<%= entry.id %>" class="btn btn-primary me-2 btn-update" style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;">
+                          Изменить
+                        </a>
+                        <% if (locals.admin || entry.username === locals.user.name) { %>
+                          <a type="button" href="/delete/<%= entry.id %>" class="btn btn-primary me-2 btn-delete" style="border: 2px #c9007c solid; color: #ffffff; background-color: #c9007c;">
+                            Удалить
+                          </a>
+                        <% } %>
+                      <% } %>
+                    <% } %>
+                  
+              </div>
+          </div> 
+          </br>
+      <% }) %> 
+      </div>
+    </main>
+    <footer><%- include ('./partials/footer') %></footer>
+</body>
 </html>

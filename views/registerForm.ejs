@@ -6,85 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/bootstrap.css" />
     <script defer src="./css/bootstrap-5.3.2/dist/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./css/index.css" />
+    <link rel="stylesheet" href="/css/index.css">
     <title><%= title%></title>
   </head>
   <body>
     <header><%- include('./partials/header'); %></header>
-    <section class="register-content">
-        <div class="container-fluid">
-            <h1 class="text-center">Регистрация</h1>
-            <%- include('./partials/messages'); %>
-            <form action="#" method="post" name="user" class="p-3 container">
-              <div class="row g2 g-5">
-                <div class="col-12 col-sm-6">
-                  <div class="form-floating mb-3 pb-0">
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      placeholder="Имя"
-                      class="form-control"
-                      required
-                    /><label for="name">Имя:</label>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      placeholder="Email"
-                      class="form-control"
-                      required
-                    />
-                    <label for="email">Email:</label>
-                  </div>
-                </div>
+
+    <main class="form-login m-auto" style="width: 30%; padding: 20px">
+      <div class="container-form">
+        <form action="#" method="post" name="user">
+          <h1 class="h3 mb-3 fw-normal"  style="display: flex; justify-content: center; align-items: center">Регистрация</h1>
+  
+          <div class="form-floating">
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Имя"
+              class="form-control"
+            />
+            <label for="floatingInput">Имя</label>
+          </div>
+          <br />
+          <div class="form-floating">
+            <input
+              type="number"
+              min="1"
+              name="age"
+              id="age"
+              class="form-control"
+              placeholder="Возвраст"
+            />
+            <label for="floatingInput">Возраст</label>
+          </div>
+          <br />
+          <div class="form-floating">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Email"
+              class="form-control"
+  
+            />
+            <label for="floatingInput">Почта</label>
+          </div>
+          <br />
+          <div class="form-floating">
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Пароль"
+            />
+            <label for="floatingPassword">Пароль</label>
+            <br />
+          </div>
+          <br />
+            <div class="form-check">
+              <label class="form-check-label" for="isAdmin"  >
+                Права администратора
+              </label>
+              <input class="form-check-input" type="checkbox" value="1" id="isAdmin" name="isAdmin">
+            </div>
+            <br>
+            <div class="row g-2 g-5"  style="display: flex; justify-content: center; align-items: center">
+              <div class="col-12 col-sm-6">Уже зарегистрированны?<a href="login" class="text-decoration-none"> Войти</a></div>
               </div>
-              <div class="row g-2 g-5">
-                
-                <div class="col-12 col-sm-6">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="age"
-                      name="age"
-                      id="age"
-                      class="form-control"
-                      placeholder="Возвраст"
-                      required
-                    /><label for="age">Возвраст:</label>
-                  </div>
-                </div>
-                <div class="col-12 col-sm-6">
-                  <div class="form-floating mb-3">
-                    <input
-                      type="password"
-                      id="password"
-                      name="password"
-                      class="form-control"
-                      placeholder="Пароль"
-                      required
-                    />
-                    <label for="password">Пароль:</label>
-                  </div>
-                </div>
-              </div>
-              <div class="row mt-3">
-                <div class="col-12 col-sm-4">
-                <button type="submit" class="btn btn-info">Регистрация</button>
-                </div>
-                </div>
-                
-                <div class="row g-2 g-5">
-                <div class="col-12 col-sm-6">
-                <a href="login" class="text-decoration-none">Уже зарегистрированны? Войти</a>
-                </div>
-                </div>
-             </form>
+          </div>
         </div>
-    </section>
+          <button class="btn btn-primary w-100 py-2" type="submit" style="background-color: #9b005f; border: 2px #9b005f solid; border-radius: 5px">
+            Регистрация
+          </button>
+        </form>
+      </div>
+    </main>
+    
     <footer><%- include('./partials/footer')%></footer>
   </body>
 </html>

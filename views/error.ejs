@@ -6,24 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/bootstrap.css" />
     <script defer src="./css/bootstrap-5.3.2/dist/js/bootstrap.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="./css/index.css" />
-    <title>Error</title>
+    <link rel="stylesheet" href="./error.css" />
+    <title><%= title %></title>
   </head>
   <body>
     <header><%- include('./partials/header'); %></header>
-    <div class="container">
-      <div class="container-error-body">
-        <h4 class="error-body-head">Error</h4>
-        <img src="error.jpg" alt="ERROR 404" class="error-body-img" />
-        <%if(err.status === 404){%>
-        <h1><%=err.message%></h1>
-        <img src="<%=link%>" alt="kukushka" />
-        <%}%>
-        <p class="error-body-main">Ошибка, вернитесь позже</p>
-
-        <p class="test"></p>
-      </div>
+    <div class="container-error">
+      <figure>
+        <div class="sad-mac"></div>
+        <figcaption>
+          <span class="sr-text">Error 404: Not Found</span>
+          <span class="e"></span>
+          <span class="r"></span>
+          <span class="r"></span>
+          <span class="o"></span>
+          <span class="r"></span>
+          <span class="_4"></span>
+          <span class="_0"></span>
+          <span class="_4"></span>
+          <span class="n"></span>
+          <span class="o"></span>
+          <span class="t"></span>
+          <span class="f"></span>
+          <span class="o"></span>
+          <span class="u"></span>
+          <span class="n"></span>
+          <span class="d"></span>
+        </figcaption>
+      </figure>
     </div>
     <footer><%- include('./partials/footer')%></footer>
   </body>

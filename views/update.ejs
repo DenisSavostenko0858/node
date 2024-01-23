@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+  </head>
+  <body>
     <header><%- include ('./partials/header') %></header>
-    <main>
-        <h1>Измени свой пост</h1>
-   
+    <div class="container">
+      <h1>Измени свой пост</h1>
+      <%#- include ('./partials/messages') %>
       <form method="post" action="/update/<%= entry.id %>?_method=PUT"">
         <div class="mb-3">
           <label for="z" class="form-label">Заголовок</label>
@@ -42,7 +44,6 @@
         </button>
       </form>
     </div>
-    </main>
     <footer><%- include ('./partials/footer') %></footer>
-</body>
+  </body>
 </html>

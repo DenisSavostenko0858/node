@@ -2,20 +2,15 @@ const express = require("express");
 const favicon = require("express-favicon");
 const fs = require("fs");
 const path = require("path");
-const { nextTick } = require("process");
 const ejs = require("ejs");
 const session = require("express-session");
-
+const userSession = require("./middleware/user_session");
 const app = express();
 const myRoutes = require("./routers/index_routers");
-const userSession = require("./middleware/user_session");
-const messagers = require("./middleware/messegers");
 const port = "3000";
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
-
-const filePath = path.join(__dirname, "tmp", "1.txt");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -41,16 +36,17 @@ app.use(
   )
 );
 
+
 app.use(favicon(__dirname + "/public/favicon.png"));
+
 app.use(userSession);
 app.use(myRoutes);
-app.use(messagers);
 
 app.listen(port, () => {
-  console.log(`Локальный сервер запущен, порт: ${port}`);
+  console.log(`listen on port ${port}`);
 });
+
 app.get("env") == "production";
-console.log(app.get("env"));
 if (app.get("env") == "production") {
   app.use((req, res, err) => {
     res.status(err.status);
@@ -58,21 +54,12 @@ if (app.get("env") == "production") {
   });
 }
 //ERROR HANDLER
+app.use((error, req, res, next) => {
+  res.status(error.statusCode || 500).render('error', { title: 'Ошибка', message: error.message });
+});
 app.use((req, res, next) => {
-  const err = new Error("Could't get path");
-  err.status = 404;
-  next(err);
+  const error = new Error('Страница не найдена');
+  error.statusCode = 404;
+  next(error);
 });
 
-if (app.get("env") != "development") {
-  app.use(function (err, req, res, next) {
-    console.log(err.status, err.message);
-    res.status = 404;
-    link = "https://centralsib.com/media/gallery/kukushka.jpg";
-    res.render("error.ejs", { err, link });
-  });
-} else {
-  app.use(function (err, req, res, next) {
-    console.log(app.get("env"), err.status, err.message);
-  });
-}
