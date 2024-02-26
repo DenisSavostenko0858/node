@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
 exports.form = (req, res) => {
   res.render("loginForm", { title: "Вход" });
 };
@@ -12,6 +14,16 @@ exports.submit = (req, res, next) => {
     } else {
       req.session.userEmail = data.email;
       req.session.userName = data.name;
+      const token = jwt.sign({
+        username: req.body.name
+      },
+      // {expiresIn: jwt_time},
+        'secret', { expiresIn: 60 * 60 });
+        res.cookie("jwt", token,{
+          httpOnly: true,
+          // masAge: jwt_time,
+        });
+        console.info("Токен авторизации у пользователя "+ data.name + " обновлен: " + token);
       res.redirect("/");
     }
   });

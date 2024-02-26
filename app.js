@@ -7,8 +7,9 @@ const session = require("express-session");
 const userSession = require("./middleware/user_session");
 const app = express();
 const myRoutes = require("./routers/index_routers");
+const cookieParser = require("cookie-parser");
 const port = "3000";
-
+require('dotenv').config();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
@@ -25,7 +26,7 @@ app.use(
     saveUninitialized: true,
   })
 );
-
+app.use(cookieParser());
 app.use(
   "/css/bootstrap.css",
   express.static(
