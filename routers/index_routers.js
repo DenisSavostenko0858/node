@@ -4,6 +4,7 @@ const register = require("../controllers/register");
 const login = require("../controllers/login");
 const entries = require("../controllers/entries");
 const validation = require("../middleware/validate_form");
+const passport = require("passport");
 
 router.get("/", (req, res) => {
   res.render("home", {
@@ -14,7 +15,7 @@ router.get("/", (req, res) => {
 router.get("/entries", entries.list);
 
 router.get("/post", entries.form);
-router.post("/post", entries.submit);
+router.post("/post",  passport.authenticate("jwt", {session: false}),entries.submit);
 
 router.get("/update/:id", entries.updateForm);
 router.post("/update/:id", entries.updateSubmit);

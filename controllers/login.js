@@ -21,7 +21,7 @@ exports.submit = (req, res, next) => {
         'secret', { expiresIn: 60 * 60 });
         res.cookie("jwt", token,{
           httpOnly: true,
-          // masAge: jwt_time,
+          masAge: 600000,
         });
         console.info("Токен авторизации у пользователя "+ data.name + " обновлен: " + token);
       res.redirect("/");

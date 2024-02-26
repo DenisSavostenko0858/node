@@ -8,16 +8,21 @@ const userSession = require("./middleware/user_session");
 const app = express();
 const myRoutes = require("./routers/index_routers");
 const cookieParser = require("cookie-parser");
+const passport = require("passport");
 const port = "3000";
 require('dotenv').config();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+const passportFunction = require("./middleware/passport")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "css")));
 app.use(express.static(path.join(__dirname, "views")));
+
+passportFunction(passport);
 
 app.use(
   session({
