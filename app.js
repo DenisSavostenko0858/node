@@ -22,8 +22,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "css")));
 app.use(express.static(path.join(__dirname, "views")));
 
-passportFunction(passport);
-
 app.use(
   session({
     secret: "aboba",
@@ -31,7 +29,11 @@ app.use(
     saveUninitialized: true,
   })
 );
+
 app.use(cookieParser());
+app.use(passport.initialize());
+passportFunction(passport);
+
 app.use(
   "/css/bootstrap.css",
   express.static(

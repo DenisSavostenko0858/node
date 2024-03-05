@@ -1,8 +1,6 @@
 const JwtStrategy = require("passport-jwt").Strategy;
-const passport = require("passport");
 const User = require("../models/user");
 require('dotenv').config();
-// const { options } = require("../routers/index_routers");
 const cookieExtractor = function (req){
     let token = null;
     if(req){
@@ -10,9 +8,10 @@ const cookieExtractor = function (req){
     }
     return token;
 }
+// const secretOrkey = 'arbuz';
 const options = {
     jwtFromRequest: cookieExtractor,
-    secretOrkey: process.env.jwtToken
+    secretOrKey: 'secret'
 };
 function passportFunction(passport){
     passport.use(
@@ -24,11 +23,11 @@ function passportFunction(passport){
                     return done(null, user);
                 }else{
                     console.info("Токен не создан");
-                    return done(null, user);
+                    return done(null, false);
                 }
             })
         })
     )
 };
 
-module.exports = passportFunction();
+module.exports = passportFunction;
