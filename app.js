@@ -14,7 +14,7 @@ require('dotenv').config();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-const passportFunction = require("./middleware/passport")
+const passportFunction = require("./middleware/passport_yandex")
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -32,6 +32,7 @@ app.use(
 
 app.use(cookieParser());
 app.use(passport.initialize());
+app.use(passport.session());
 passportFunction(passport);
 
 app.use(
