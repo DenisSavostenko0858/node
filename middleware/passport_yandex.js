@@ -12,24 +12,22 @@ function passportFunction(passport){
         done(null, obj);
     });
 
-    passport.use(new YandexStrategy({
-        clientID: YANDEX_CLIENT_ID,
-        clientSecret: YANDEX_CLIENT_SECRET,
+    passport.use(
+      new YandexStrategy({
+        clientID: "4c1ddb6869ee47b483fa331584e6947a",
+        clientSecret: "48f86bf77b3b432eb9d11160c7814158",
         callbackURL: "http://127.0.0.1:3000/auth/yandex/callback"
       },
-      function(process,y0_AgAAAABaF4VnAAtluAAAAAD9JGxKAAC8KtAM0wpP6Y-Xf45BIv0bcaE6Eg, refreshToken, profile, done) {
-        // asynchronous verification, for effect...
-        process.nextTick(function () {
-    
-          // To keep the example simple, the user's Yandex profile is returned
-          // to represent the logged-in user.  In a typical application, you would
-          // want to associate the Yandex account with a user record in your
-          // database, and return that user instead.
+      function(
+        y0_AgAAAABaF4VnAAtluAAAAAD9JGxKAAC8KtAM0wpP6YXf45BIv0bcaE6Eg,
+         refreshToken, 
+         profile, 
+         done){
           console.info("Получили профиль от Яндекса: " + profile.name)
-          return done(null, profile);
-        });
-      }
-    ));
-};
+          return done(null, profile)
+        }
+        )
+    )
+}
 
 module.exports = passportFunction;
