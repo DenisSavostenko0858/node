@@ -10,4 +10,7 @@ module.exports = function (req, res, next) {
     }
     next();
   });
+  if (req.session.passport) {
+    res.locals.user = req.session.passport.user;
+  }
 };

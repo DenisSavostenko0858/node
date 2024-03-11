@@ -1,10 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const passport = require("passport");
+
 const register = require("../controllers/register");
 const login = require("../controllers/login");
 const entries = require("../controllers/entries");
 const validation = require("../middleware/validate_form");
-const passport = require("passport");
+const esureAuthenticated = require("../middleware/isAuthenticated")
 
 router.get("/", (req, res) => {
   res.render("home", {
@@ -13,9 +15,9 @@ router.get("/", (req, res) => {
 });
 
 router.get("/entries", entries.list);
-
-router.get("/post", entries.form);
-router.post("/post",  passport.authenticate("jwt", {session: false}),entries.submit);
+// esureAuthenticated вставить
+router.get("/post" ,entries.form);
+router.post("/post", passport.authenticate("jwt", {session: false}),entries.submit);
 
 router.get("/update/:id", entries.updateForm);
 router.post("/update/:id", entries.updateSubmit);
@@ -25,16 +27,19 @@ router.get("/delete/:id", entries.delete);
 router.get("/register", register.form);
 router.post("/register", validation, register.submit);
 
-router.get("/auth/yandex",
-  passport.authenticate("yandex"), 
+router.get('/auth/yandex',
+  passport.authenticate('yandex'),
   function(req, res){
-  }
-);
-router.get("/auth/yandex/callback",
-passport.authenticate("yandex",{failureRedirect: "/login"}),
-function(req,res){
-  res.redirect("/")
-});
+    // The request will be redirected to Yandex for authentication, so
+    // this function will not be called.
+  });
+
+router.get('/auth/yandex/callback', 
+  passport.authenticate('yandex', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  });
 
 router.get("/login", login.form);
 router.post("/login", login.submit);

@@ -25,12 +25,7 @@ function passportFunction(passport){
         clientSecret: process.env.YANDEX_CLIENT_SECRET,
         callbackURL: "http://127.0.0.1:3000/auth/yandex/callback",
       },
-      function(
-        apptokenyandex,
-         refreshToken, 
-         profile, 
-         done
-         ){
+      function(apptokenyandex, refreshToken, profile, done){
            console.info("Получили профиль от Яндекса: " + profile.name);
            return done(null, profile);
           }
