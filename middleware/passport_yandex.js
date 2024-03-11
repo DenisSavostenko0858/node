@@ -5,29 +5,37 @@ require('dotenv').config();
 function passportFunction(passport){
 
     passport.serializeUser(function(user, done) {
-        done(null, user);
+      const newUser = {};
+      newUser.id = user.id;
+      newUser.email = user.emails[0].value;
+      newUser.name =  user.displayName;
+      newUser.birthday = user.birthday ? date.now() - user.birthday : 0;
+      done(null, newUser);
     });
       
       passport.deserializeUser(function(obj, done) {
         done(null, obj);
     });
-
+    // const yandexclientid = "4c1ddb6869ee47b483fa331584e6947a";
+    // const yandexcliensecret = "48f86bf77b3b432eb9d11160c7814158";
+    const apptokenyandex = process.env.apptokenyandex; 
     passport.use(
       new YandexStrategy({
-        clientID: "4c1ddb6869ee47b483fa331584e6947a",
-        clientSecret: "48f86bf77b3b432eb9d11160c7814158",
-        callbackURL: "http://127.0.0.1:3000/auth/yandex/callback"
+        clientID: process.env.YANDEX_CLIENT_ID,
+        clientSecret: process.env.YANDEX_CLIENT_SECRET,
+        callbackURL: "http://127.0.0.1:3000/auth/yandex/callback",
       },
       function(
-        y0_AgAAAABaF4VnAAtluAAAAAD9JGxKAAC8KtAM0wpP6YXf45BIv0bcaE6Eg,
+        apptokenyandex,
          refreshToken, 
          profile, 
-         done){
-          console.info("Получили профиль от Яндекса: " + profile.name)
-          return done(null, profile)
-        }
+         done
+         ){
+           console.info("Получили профиль от Яндекса: " + profile.name);
+           return done(null, profile);
+          }
         )
-    )
+        )
 }
 
 module.exports = passportFunction;
