@@ -38,6 +38,16 @@ router.get('/auth/yandex/callback',
     // Successful authentication, redirect home.
     res.redirect('/');
   });
+router.get('/auth/google',
+  passport.authenticate('google', { scope:
+      [ 'email', 'profile' ] })
+);
+
+router.get('/auth/google/callback', 
+  passport.authenticate( 'google', {
+    successRedirect: '/',
+    failureRedirect: '/login'
+}));
 
 router.get("/login", login.form);
 router.post("/login", login.submit);
