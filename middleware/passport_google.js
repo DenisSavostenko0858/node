@@ -15,9 +15,11 @@ function passportFunctionGoogle(passport){
     });
     passport.use(
       new GoogleStrategy({
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/google/callback",
+        // clientID: process.env.GOOGLE_CLIENT_ID,
+        // clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        clientID: "249518622279-785fh8bg8vnm6vhf1cv8fkd44u46jm88.apps.googleusercontent.com",
+        clientSecret: "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",
+        callbackURL: "localhost:3000/auth/google/callback",
         // apptokengoogle: process.env.apptokengoogle
         // passReqToCallback   : true
       },
