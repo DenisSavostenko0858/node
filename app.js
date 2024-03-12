@@ -34,6 +34,8 @@ app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 passportFunction(passport);
+passportFunctionYandex(passport);
+passportFunctionGoogle(passport);
 
 app.use(
   "/css/bootstrap.css",
