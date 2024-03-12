@@ -86,3 +86,21 @@ main {
 footer {
   margin-top: 100px;
 }/*# sourceMappingURL=index.css.map */
+
+.otherauth{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+}
+.iconauth{
+  display: flex;
+  margin: 15px;
+  transition: 0.3s;
+}
+.iconauth:hover{
+  opacity: 50%;
+  transition: 0.3s;
+}

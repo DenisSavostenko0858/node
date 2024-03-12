@@ -30,8 +30,6 @@ router.post("/register", validation, register.submit);
 router.get('/auth/yandex',
   passport.authenticate('yandex'),
   function(req, res){
-    // The request will be redirected to Yandex for authentication, so
-    // this function will not be called.
   });
 
 router.get('/auth/yandex/callback', 
