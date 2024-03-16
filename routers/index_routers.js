@@ -36,7 +36,7 @@ router.get('/auth/yandex/callback',
   passport.authenticate('yandex', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect('/');
+    res.redirect('/entries');
   });
 router.get('/auth/google',
   passport.authenticate('google', { scope:
@@ -45,7 +45,7 @@ router.get('/auth/google',
 
 router.get('/auth/google/callback', 
   passport.authenticate( 'google', {
-    successRedirect: '/',
+    successRedirect: '/entries',
     failureRedirect: '/login'
 }));
 
