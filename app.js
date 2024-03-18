@@ -16,6 +16,7 @@ app.set("views", path.join(__dirname, "views"));
 
 const passportFunctionYandex = require("./middleware/passport_yandex");
 const passportFunctionGoogle = require("./middleware/passport_google");
+const passportFunctionGithub = require("./middleware/passport_github");
 
 
 app.use(express.json());
@@ -38,6 +39,7 @@ app.use(passport.session());
 
 passportFunctionYandex(passport);
 passportFunctionGoogle(passport);
+passportFunctionGithub(passport);
 
 app.use(
   "/css/bootstrap.css",
