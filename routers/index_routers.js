@@ -38,20 +38,22 @@ router.get('/auth/yandex/callback',
     // Successful authentication, redirect home.
     res.redirect('/entries');
   });
-router.get('/auth/google',
-  passport.authenticate('google', { scope:
-      [ 'email', 'profile' ] })
-);
-
-router.get('/auth/google/callback', 
-  passport.authenticate( 'google', {
-    successRedirect: '/entries',
-    failureRedirect: '/login'
-}));
-router.get(
-  "/auth/github",
-  passport.authenticate("github", { scope: ["user:email"] })
-);
+  router.get(
+    "/auth/google",
+    passport.authenticate("google", { scope: ["email", "profile"] })
+  );
+  
+  router.get(
+    "/auth/google/callback",
+    passport.authenticate("google", {
+      successRedirect: "/",
+      failureRedirect: "/login",
+    })
+  );
+  router.get(
+    "/auth/github",
+    passport.authenticate("github", { scope: ["user:email"] })
+  );
 
 router.get(
   "/auth/github/callback",
