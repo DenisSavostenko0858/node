@@ -8,7 +8,6 @@ const cookieExtractor = function (req){
     }
     return token;
 }
-// const secretOrkey = 'arbuz';
 const options = {
     jwtFromRequest: cookieExtractor,
     secretOrKey: 'secret'
