@@ -48,15 +48,26 @@ router.get('/auth/google/callback',
     successRedirect: '/entries',
     failureRedirect: '/login'
 }));
-router.get('/auth/github',
-  passport.authenticate('github', { scope: [ 'user:email', 'user:profile' ] }));
+router.get(
+  "/auth/github",
+  passport.authenticate("github", { scope: ["user:email"] })
+);
 
-router.get('/auth/github/callback', 
-  passport.authenticate('github', { failureRedirect: '/login' }),
-  function(req, res) {
-    res.redirect('/entries');
-  });
-
+router.get(
+  "/auth/github/callback",
+  passport.authenticate("github", { failureRedirect: "/login" }),
+  function (req, res) {
+    res.redirect("/entries");
+  }
+);
+router.get("/auth/vkontakte", passport.authenticate("vkontakte"));
+router.get(
+  "/auth/vkontakte/callback",
+  passport.authenticate("vkontakte", {
+    successRedirect: "/entries",
+    failureRedirect: "/login",
+  })
+);
 router.get("/login", login.form);
 router.post("/login", login.submit);
 router.get("/logout", login.logout);
