@@ -44,7 +44,7 @@ router.get('/auth/yandex/callback',
   router.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-      successRedirect: "/",
+      successRedirect: "/entries",
       failureRedirect: "/login",
     })
   );
