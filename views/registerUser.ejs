@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/index.css">
+    <title>Регистрация</title>
+</head>
+<body>
+  <%- include('partial/header.ejs'); -%>
+  <div class="container">
+    <form action="#" method="post"class="container-form">
+      <div class="container-header"><h1>Регистрация</h1></div>
+      <input type="text" placeholder="Иван" id="name" name="username">
+      <input type="email" placeholder="gmail@gmail" id="email" name="email">
+      <input type="password" placeholder="password" id="pass" name="password">
+      <input type="password" placeholder="password" id="repitpass">
+      <input type="submit" value="Зарегистрироваться" class="form-buttom">
+    </form>
+  </div>
+  <div class="container">
+    <div class="container-passport">
+      <a href="/auth/yandex"><img src="../public/images/yandex.png" class="img-passport"></a>
+      <a href="/auth/google"><img src="../public/images/google.png" class="img-passport"></a>
+      <a href="/auth/vkontakte"><img src="../public/images/vk.png" class="img-passport"></a>
+      <a href="/auth/github"><img src="../public/images/github.png" class="img-passport"></a>
+    </div>
+  </div>
+</body>
+</html>
