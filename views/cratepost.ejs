@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/public/index.css">
+    <title>Создайте пост</title>
+</head>
+<body>
+    <%- include('partial/headerEntry.ejs'); -%>
+    <div class="container">
+        <div class="container-header">
+            <h1>Forum</h1>
+        </div>
+        <% if (locals.messages){ %> <% messages.forEach((element) => { %>
+            <h2 class="<% element.type %>"> <% element.string %> </h2>
+            <% }) %> <% remove.Messages() %> <% } %>
+        <div class="container-contnet">
+            <form action="/post" method="post" class="container-form">
+                <div class="container-form-post">
+                    <div class="container-header">Тема</div>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="entry[title]"
+                    id="z"
+                    aria-describedby="helpId"
+                    placeholder="Тема"
+                  />
+                </div>
+                <div class="container-form-post">
+                    <div class="container-header">Сообщение</div>
+                  <textarea
+                    class="form-control"
+                    name="entry[content]"
+                    id="s"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <input type="submit" value="Post" class="form-buttom">
+              </form>
+        </div>
+    </div>
+</body>
+</html>

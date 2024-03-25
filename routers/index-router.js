@@ -6,6 +6,7 @@ const passport = require('passport');
 
 const register = require('../controllers/register');
 const login = require('../controllers/login');
+const entries = require('../controllers/createpost');
 
 
 router.get('/', function(req, res) {
@@ -74,6 +75,10 @@ router.get(
     failureRedirect: "/login",
   })
 );
+
+router.get("/post", entries.form);
+
+router.post("/post", entries.submit);
 
 router.use((req, res, next) => {
     res.render('../views/error')
