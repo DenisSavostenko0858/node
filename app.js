@@ -38,6 +38,8 @@ app.post('/test', function (req, res){
     res.end("Прошли post text");
 })
 
+
+// фывфыв
 //Создаем файл
 function addLine(line){
     line = line + " timestamp: " + new Date().toLocaleString();
