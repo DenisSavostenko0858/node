@@ -1,26 +1,35 @@
-const User = require('./userdb');
+const { User } = require("../models/db");
+const bcrypt = require('bcrypt');
 
-exports.submitIsForm = (req, res, next) => {
-  console.log(req.body)
-  if (!req.body || !req.body.email) {
+exports.submitIsForm = async (req, res, next) => {
+  console.log(req.body);
+
+  if (!req.body || !req.body.email || !req.body.password || !req.body.username) {
     return res.status(400).send("Некорректные данные формы");
   }
-  User.findByEmail(req.body.email, (error, user) => {
-    if (error) return next(error);
-    if (user) {
+
+  try {
+    const existingUser = await User.findOne({ where: { email: req.body.email } });
+    if (existingUser) {
       return res.send("<div style='display:flex; align-items:center; justify-content: center; flex-direction: column; font-size: 20px'><h3>Вы уже зарегистрированы</h3> <a href='/register'>попробуйте войти</a></div>");
     } else {
-      User.create(req.body, (error) => {
-        if (error) return next(error);
-        req.session.userEmail = req.body.email;
-        req.session.userName = req.body.name;
-        console.log("Пользователь создан");
-        if (req.session.userEmail && req.session.userName) {
-          res.redirect("/entry");
-        } else {
-          return res.status(500).send("Ошибка при установке данных в сессию");
-        }
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      const newUser = await User.create({
+        email: req.body.email,
+        password: hashedPassword,
+        username: req.body.username
       });
+      req.session.userEmail = req.body.email;
+      req.session.userName = req.body.username;
+      console.log("Пользователь создан");
+      if (req.session.userEmail && req.session.userName) {
+        res.redirect("/entry");
+      } else {
+        return res.status(500).send("Ошибка при установке данных в сессию");
+      }
     }
-  });
-};
+  } catch (error) {
+    console.error(error);
+    return res.status(500).send("Ошибка сервера");
+  }
+}
