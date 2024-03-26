@@ -1,17 +1,16 @@
-const {User} = require("./userdb");
+const User = require("../models/db");
 
-async function authentificate (dataIsForm, cb) {
-  try{
-    const user = await User.findOne({where: {email: dataIsForm.email}});
-
+async function authentificate(dataIsForm, cb) {
+  try {
+    const user = await User.findOne({ where: { email: dataIsForm.email } });
     if (!user) return cb();
-    if (dataIsForm.password === user.password) { 
-      cb(null, user); 
-    } else { 
-      cb(); 
+    if (dataIsForm.password === user.password) {
+      return cb(user);
+    } else {
+      return cb();
     }
-  } catch(err){
-    return cb(err)
+  } catch (err) {
+    return cb(err);
   }
 }
 exports.submit = (req, res, next) => {

@@ -25,6 +25,7 @@
     "passport-yandex": "^0.0.5",
     "path": "^0.12.7",
     "sass": "^1.72.0",
+    "sequelize": "^6.37.1",
     "sqlite3": "^5.1.7"
   },
   "devDependencies": {

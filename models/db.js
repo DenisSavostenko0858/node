@@ -1,11 +1,9 @@
-const logger = require('../logger/index-logger')
-const { Sequelize } = require('sequelize');
+const Sequelize  = require('sequelize');
 require('dotenv').config();
 
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../database/post.db',
-    logging: (msg)=>logger.info(msg)
+    storage: './database/usercontent.db'
 });
 
 // orm class entry
@@ -25,9 +23,6 @@ const Entry = sequelize.define(
         content:{
             type: Sequelize.STRING,
         },
-        timestamps:{
-            timestamps: false
-        }
     }
 )
 // orm class user
@@ -49,4 +44,4 @@ const User = sequelize.define(
         }
     }
 )
-module.exports = {Entry, User, sequelize};
+module.exports = User;
