@@ -18,7 +18,7 @@ const passportFunctionGithub = require('./middleware/passport-github');
 const passportFunctionGoogle = require('./middleware/passport-google');
 const passportFunctionVKontakte = require('./middleware/passport-vk');
 
-const sequelize = require('./models/db')
+const {sequelize} = require('./models/db')
 
 const passport = require('passport');
 passportFunctionGithub(passport);

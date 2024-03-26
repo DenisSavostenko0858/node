@@ -1,4 +1,4 @@
-const User = require("./userdb");
+const {User} = require("./userdb");
 
 async function authentificate (dataIsForm, cb) {
   try{

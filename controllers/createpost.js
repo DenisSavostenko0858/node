@@ -1,4 +1,4 @@
-const Entry = require("./postdb");
+const {Entry} = require("./postdb");
 
 // exports.list = (req, res, next) => {
 //   Entry.selectAll((err, entries) => {
