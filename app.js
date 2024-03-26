@@ -8,7 +8,6 @@ require('dotenv').config();
 const path = require('path');
 const PORT = process.env.PORT;
 app.set('view engine', 'ejs');
-
 const rout = require('./routers/index-router');
 app.use(cookieParser());
 const userSessions = require('./middleware/user_session');
@@ -18,6 +17,8 @@ const passportFunctionYandex = require('./middleware/passport-yandex');
 const passportFunctionGithub = require('./middleware/passport-github');
 const passportFunctionGoogle = require('./middleware/passport-google');
 const passportFunctionVKontakte = require('./middleware/passport-vk');
+
+const sequelize = require('./models/db')
 
 const passport = require('passport');
 passportFunctionGithub(passport);
@@ -40,6 +41,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(rout);
 app.use(userSessions);
 
-app.listen(PORT, function(){
-    console.log(`listening on http://localhost:${PORT}`);   
+app.listen(PORT, async function(){
+    await sequelize.sync({ force: true });
+    console.log(`listening on http://localhost:${PORT}`);
+    console.log("База данных sequelize синхронизирована");      
 });

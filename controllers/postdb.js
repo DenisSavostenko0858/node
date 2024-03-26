@@ -2,7 +2,7 @@ const sqlite3 = require("sqlite3").verbose();
 const db = new sqlite3.Database('./database/post.db');
 
 const sql =
-  "CREATE TABLE IF NOT EXISTS entries(id INTEGER PRIMARY KEY AUTOINCREMENT,username , title TEXT, content TEXT NOT NULL, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
+  "CREATE TABLE IF NOT EXISTS entries(id INTEGER PRIMARY KEY AUTOINCREMENT,username text, title TEXT, content TEXT NOT NULL, timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP)";
 db.run(sql);
 
 class Entry {

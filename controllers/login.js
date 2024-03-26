@@ -1,7 +1,21 @@
 const User = require("./userdb");
 
+async function authentificate (dataIsForm, cb) {
+  try{
+    const user = await User.findOne({where: {email: dataIsForm.email}});
+
+    if (!user) return cb();
+    if (dataIsForm.password === user.password) { 
+      cb(null, user); 
+    } else { 
+      cb(); 
+    }
+  } catch(err){
+    return cb(err)
+  }
+}
 exports.submit = (req, res, next) => {
-    User.authentificate(req.body, (error, data) => {
+    authentificate(req.body, (error, data) => {
       if (error) return next(error);
       if (!data) {
         res.send("<div style='display:flex; align-items:center; justify-content: center; flex-direction: column; font-size: 20px'><h3>Логин или пароль не верны</h3> <a href='/login'>попробуйте еще раз</a></div>");
